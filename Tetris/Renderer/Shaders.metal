@@ -15,6 +15,18 @@ struct VertexOut {
     float4 pos [[position]];
 };
 
+struct VertexIn {
+    float4 position [[attribute(0)]];
+};
+
+vertex float4 vertexCube(const VertexIn vertex_in [[stage_in]]) {
+    return vertex_in.position;
+}
+
+fragment float4 fragmentCube(constant FragmentUniforms &uniforms [[buffer(0)]]) {
+    return float4(uniforms.brightness * float3(0.0, 1.0, 0.0), 1.0);
+}
+
 vertex VertexOut vertexShader(const device Vertex *vertexArray [[buffer(0)]], unsigned int vid [[vertex_id]]) {
     Vertex in = vertexArray[vid];
     VertexOut out;
