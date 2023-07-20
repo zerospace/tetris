@@ -7,24 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0067E632A67E8A0007E01F6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E5F2A67E8A0007E01F6 /* Model.swift */; };
+		C0067E642A67E8A0007E01F6 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C0067E612A67E8A0007E01F6 /* Shaders.metal */; };
+		C0067E682A691AFE007E01F6 /* VertexDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E672A691AFE007E01F6 /* VertexDescriptor.swift */; };
+		C0067E6B2A6959A3007E01F6 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E6A2A6959A3007E01F6 /* Camera.swift */; };
+		C0067E6D2A695A0B007E01F6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E6C2A695A0B007E01F6 /* GameScene.swift */; };
+		C0067E6F2A696DC3007E01F6 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E6E2A696DC3007E01F6 /* Transform.swift */; };
+		C0067E712A697262007E01F6 /* FPCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E702A697262007E01F6 /* FPCamera.swift */; };
+		C06A52B42A56BEDB00E905C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C06A52B02A56BEDB00E905C2 /* Main.storyboard */; };
+		C06A52B52A56BEDB00E905C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C06A52B32A56BEDB00E905C2 /* Assets.xcassets */; };
+		C06A52B72A56BF1700E905C2 /* Venus_de_Milo.obj in Resources */ = {isa = PBXBuildFile; fileRef = C06A52B62A56BF1700E905C2 /* Venus_de_Milo.obj */; };
+		C0E86CD72A1780F3008BBF2C /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86CD62A1780F3008BBF2C /* FloatExtension.swift */; };
+		C0E86CD92A17818D008BBF2C /* MatrixExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86CD82A17818D008BBF2C /* MatrixExtensions.swift */; };
 		C0F896CC2A0BB1C3004A313B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F896CB2A0BB1C3004A313B /* AppDelegate.swift */; };
 		C0F896CE2A0BB1C3004A313B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F896CD2A0BB1C3004A313B /* ViewController.swift */; };
-		C0F896D02A0BB1C6004A313B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F896CF2A0BB1C6004A313B /* Assets.xcassets */; };
-		C0F896D32A0BB1C6004A313B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F896D12A0BB1C6004A313B /* Main.storyboard */; };
 		C0F896E02A0CE458004A313B /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F896DF2A0CE457004A313B /* Renderer.swift */; };
-		C0F896E22A0CE46E004A313B /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C0F896E12A0CE46E004A313B /* Shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0067E5F2A67E8A0007E01F6 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		C0067E612A67E8A0007E01F6 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		C0067E622A67E8A0007E01F6 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
+		C0067E672A691AFE007E01F6 /* VertexDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexDescriptor.swift; sourceTree = "<group>"; };
+		C0067E6A2A6959A3007E01F6 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		C0067E6C2A695A0B007E01F6 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		C0067E6E2A696DC3007E01F6 /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
+		C0067E702A697262007E01F6 /* FPCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPCamera.swift; sourceTree = "<group>"; };
+		C06A52B02A56BEDB00E905C2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C06A52B32A56BEDB00E905C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C06A52B62A56BF1700E905C2 /* Venus_de_Milo.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Venus_de_Milo.obj; sourceTree = "<group>"; };
+		C0E86CD42A14ED30008BBF2C /* Tetris-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tetris-BridgingHeader.h"; sourceTree = "<group>"; };
+		C0E86CD62A1780F3008BBF2C /* FloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
+		C0E86CD82A17818D008BBF2C /* MatrixExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixExtensions.swift; sourceTree = "<group>"; };
 		C0F896C82A0BB1C3004A313B /* Tetris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tetris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F896CB2A0BB1C3004A313B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0F896CD2A0BB1C3004A313B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C0F896CF2A0BB1C6004A313B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C0F896D22A0BB1C6004A313B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0F896D42A0BB1C6004A313B /* Tetris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tetris.entitlements; sourceTree = "<group>"; };
-		C0F896DE2A0CE457004A313B /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		C0F896DF2A0CE457004A313B /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		C0F896E12A0CE46E004A313B /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +57,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C0067E5E2A67E8A0007E01F6 /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				C0067E672A691AFE007E01F6 /* VertexDescriptor.swift */,
+				C0067E6E2A696DC3007E01F6 /* Transform.swift */,
+				C0067E5F2A67E8A0007E01F6 /* Model.swift */,
+			);
+			path = Geometry;
+			sourceTree = "<group>";
+		};
+		C0067E602A67E8A0007E01F6 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				C0067E612A67E8A0007E01F6 /* Shaders.metal */,
+				C0067E622A67E8A0007E01F6 /* ShaderTypes.h */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		C0067E692A695984007E01F6 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				C0067E6A2A6959A3007E01F6 /* Camera.swift */,
+				C0067E702A697262007E01F6 /* FPCamera.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		C06A52B12A56BEDB00E905C2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C06A52B32A56BEDB00E905C2 /* Assets.xcassets */,
+				C06A52B22A56BEDB00E905C2 /* Obj */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C06A52B22A56BEDB00E905C2 /* Obj */ = {
+			isa = PBXGroup;
+			children = (
+				C06A52B62A56BF1700E905C2 /* Venus_de_Milo.obj */,
+			);
+			path = Obj;
+			sourceTree = "<group>";
+		};
+		C0E86CD52A1780DB008BBF2C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C0E86CD62A1780F3008BBF2C /* FloatExtension.swift */,
+				C0E86CD82A17818D008BBF2C /* MatrixExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C0F896BF2A0BB1C3004A313B = {
 			isa = PBXGroup;
 			children = (
@@ -59,9 +132,11 @@
 			children = (
 				C0F896CB2A0BB1C3004A313B /* AppDelegate.swift */,
 				C0F896CD2A0BB1C3004A313B /* ViewController.swift */,
+				C0E86CD42A14ED30008BBF2C /* Tetris-BridgingHeader.h */,
+				C0E86CD52A1780DB008BBF2C /* Extensions */,
 				C0F896DD2A0CE457004A313B /* Renderer */,
-				C0F896CF2A0BB1C6004A313B /* Assets.xcassets */,
-				C0F896D12A0BB1C6004A313B /* Main.storyboard */,
+				C06A52B12A56BEDB00E905C2 /* Resources */,
+				C06A52B02A56BEDB00E905C2 /* Main.storyboard */,
 				C0F896D42A0BB1C6004A313B /* Tetris.entitlements */,
 			);
 			path = Tetris;
@@ -70,9 +145,11 @@
 		C0F896DD2A0CE457004A313B /* Renderer */ = {
 			isa = PBXGroup;
 			children = (
+				C0067E5E2A67E8A0007E01F6 /* Geometry */,
+				C0067E692A695984007E01F6 /* Camera */,
+				C0067E602A67E8A0007E01F6 /* Shaders */,
 				C0F896DF2A0CE457004A313B /* Renderer.swift */,
-				C0F896DE2A0CE457004A313B /* ShaderTypes.h */,
-				C0F896E12A0CE46E004A313B /* Shaders.metal */,
+				C0067E6C2A695A0B007E01F6 /* GameScene.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -135,8 +212,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0F896D02A0BB1C6004A313B /* Assets.xcassets in Resources */,
-				C0F896D32A0BB1C6004A313B /* Main.storyboard in Resources */,
+				C06A52B52A56BEDB00E905C2 /* Assets.xcassets in Resources */,
+				C06A52B42A56BEDB00E905C2 /* Main.storyboard in Resources */,
+				C06A52B72A56BF1700E905C2 /* Venus_de_Milo.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,25 +225,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0F896E22A0CE46E004A313B /* Shaders.metal in Sources */,
+				C0067E712A697262007E01F6 /* FPCamera.swift in Sources */,
+				C0067E6F2A696DC3007E01F6 /* Transform.swift in Sources */,
+				C0067E6D2A695A0B007E01F6 /* GameScene.swift in Sources */,
 				C0F896E02A0CE458004A313B /* Renderer.swift in Sources */,
+				C0067E642A67E8A0007E01F6 /* Shaders.metal in Sources */,
 				C0F896CE2A0BB1C3004A313B /* ViewController.swift in Sources */,
+				C0E86CD72A1780F3008BBF2C /* FloatExtension.swift in Sources */,
+				C0067E632A67E8A0007E01F6 /* Model.swift in Sources */,
+				C0E86CD92A17818D008BBF2C /* MatrixExtensions.swift in Sources */,
+				C0067E682A691AFE007E01F6 /* VertexDescriptor.swift in Sources */,
 				C0F896CC2A0BB1C3004A313B /* AppDelegate.swift in Sources */,
+				C0067E6B2A6959A3007E01F6 /* Camera.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C0F896D12A0BB1C6004A313B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C0F896D22A0BB1C6004A313B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C0F896D52A0BB1C6004A313B /* Debug */ = {
@@ -302,7 +377,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Tetris;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = Tetris/Renderer/ShaderTypes.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tetris/Tetris-BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -328,7 +403,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Tetris;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = Tetris/Renderer/ShaderTypes.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tetris/Tetris-BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

@@ -28,13 +28,14 @@ class ViewController: NSViewController {
         print("[GPU]: \(defaultDevice)")
         self.mtkView.device = defaultDevice
         
-        guard let renderer = Renderer(with: self.mtkView) else {
-            print("Renderer failed to initialize")
-            return
+        do {
+            let renderer = try Renderer(with: self.mtkView)
+            self.renderer = renderer
+            self.mtkView.delegate = self.renderer
         }
-        self.renderer = renderer
-        
-        self.mtkView.delegate = self.renderer
+        catch {
+            print("Renderer Error: \(error)")
+        }        
     }
 }
 
