@@ -76,7 +76,7 @@ extension float4x4 {
         self = float4x4([x.x, y.x, z.x, 0.0],
                         [x.y, y.y, z.y, 0.0],
                         [x.z, y.z, z.z, 0.0],
-                        [-dot(x, eye), -dot(y, eye), -dot(z, eye), 0.0])
+                        [-dot(x, eye), -dot(y, eye), -dot(z, eye), 1.0])
     }
     
     // MARK: - Orthographic matrix
@@ -89,5 +89,16 @@ extension float4x4 {
                         [0.0, 2.0/(top - bottom), 0.0, 0.0],
                         [0.0, 0.0, 1.0/(farZ - nearZ), 0.0],
                         [(left + right)/(left - right), (top + bottom)/(bottom - top), nearZ/(nearZ - farZ), 1.0])
+    }
+}
+
+extension SIMD4<Float> {
+    var xyz: SIMD3<Float> {
+        get { SIMD3(x, y, z) }
+        set {
+            x = newValue.x
+            y = newValue.y
+            z = newValue.z
+        }
     }
 }
