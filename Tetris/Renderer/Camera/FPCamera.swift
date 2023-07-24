@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FPCamera: Camera {
+struct FPCamera: Camera, Movement {
     var transform = Transform()
     
     var aspect: Float = 1.0
@@ -28,6 +28,8 @@ struct FPCamera: Camera {
     }
     
     mutating func update(deltaTime: Float) {
-        // TODO: add
+        let transform = updateInput(deltaTime: deltaTime)
+        rotation += transform.rotation
+        position += transform.position
     }
 }

@@ -36,6 +36,6 @@ struct GameScene {
     }
     
     mutating func update(deltaTime: Float) {
-        camera.rotation.y = deltaTime
+        camera.update(deltaTime: deltaTime)
     }
 }

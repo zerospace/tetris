@@ -29,13 +29,12 @@ class ViewController: NSViewController {
         self.mtkView.device = defaultDevice
         
         do {
-            let renderer = try Renderer(with: self.mtkView)
-            self.renderer = renderer
+            self.renderer = try Renderer(with: self.mtkView)
             self.mtkView.delegate = self.renderer
         }
         catch {
             print("Renderer Error: \(error)")
-        }        
+        }
     }
 }
 

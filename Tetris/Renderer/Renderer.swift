@@ -31,11 +31,9 @@ class Renderer: NSObject, MTKViewDelegate {
     private var uniformBufferOffset = 0
     private var uniformBufferIndex = 0
     private var uniforms: UnsafeMutablePointer<Uniforms>
-    private var rotation: Float = 0
     
     private let gpuLock = DispatchSemaphore(value: maxBuffers)
-    private var lastRenderTime: CFTimeInterval? = nil
-    private var currentTime = 0.0
+    private var lastRenderTime = CACurrentMediaTime()
     
     
     init(with view: MTKView) throws {
@@ -65,10 +63,8 @@ class Renderer: NSObject, MTKViewDelegate {
         _ = gpuLock.wait(timeout: DispatchTime.distantFuture)
 
         let systemTime = CACurrentMediaTime()
-        let timeDiff = lastRenderTime == nil ? 0 : systemTime - lastRenderTime!
+        let timeDiff = Float(systemTime - lastRenderTime)
         lastRenderTime = systemTime
-        
-        rotation += Float(timeDiff)
         
         guard let commandBuffer = commandQueue.makeCommandBuffer() else { return }
         commandBuffer.addCompletedHandler { _ in
@@ -82,7 +78,7 @@ class Renderer: NSObject, MTKViewDelegate {
         renderEncoder.setRenderPipelineState(pipelineState)
         renderEncoder.setDepthStencilState(depthState)
         
-        scene.update(deltaTime: rotation)
+        scene.update(deltaTime: timeDiff)
         for model in scene.models {
             uniformBufferIndex = (uniformBufferIndex + 1) % maxBuffers
             uniformBufferOffset = alignedUniformSize * uniformBufferIndex

@@ -14,9 +14,11 @@
 		C0067E6D2A695A0B007E01F6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E6C2A695A0B007E01F6 /* GameScene.swift */; };
 		C0067E6F2A696DC3007E01F6 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E6E2A696DC3007E01F6 /* Transform.swift */; };
 		C0067E712A697262007E01F6 /* FPCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E702A697262007E01F6 /* FPCamera.swift */; };
+		C0067E742A6A6F6F007E01F6 /* InputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E732A6A6F6F007E01F6 /* InputController.swift */; };
 		C06A52B42A56BEDB00E905C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C06A52B02A56BEDB00E905C2 /* Main.storyboard */; };
 		C06A52B52A56BEDB00E905C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C06A52B32A56BEDB00E905C2 /* Assets.xcassets */; };
 		C06A52B72A56BF1700E905C2 /* Venus_de_Milo.obj in Resources */ = {isa = PBXBuildFile; fileRef = C06A52B62A56BF1700E905C2 /* Venus_de_Milo.obj */; };
+		C0E4AF5B2A6E71D50011E36B /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E4AF5A2A6E71D50011E36B /* Movement.swift */; };
 		C0E86CD72A1780F3008BBF2C /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86CD62A1780F3008BBF2C /* FloatExtension.swift */; };
 		C0E86CD92A17818D008BBF2C /* MatrixExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86CD82A17818D008BBF2C /* MatrixExtensions.swift */; };
 		C0F896CC2A0BB1C3004A313B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F896CB2A0BB1C3004A313B /* AppDelegate.swift */; };
@@ -33,9 +35,11 @@
 		C0067E6C2A695A0B007E01F6 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		C0067E6E2A696DC3007E01F6 /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		C0067E702A697262007E01F6 /* FPCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPCamera.swift; sourceTree = "<group>"; };
+		C0067E732A6A6F6F007E01F6 /* InputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputController.swift; sourceTree = "<group>"; };
 		C06A52B02A56BEDB00E905C2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C06A52B32A56BEDB00E905C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C06A52B62A56BF1700E905C2 /* Venus_de_Milo.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Venus_de_Milo.obj; sourceTree = "<group>"; };
+		C0E4AF5A2A6E71D50011E36B /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		C0E86CD42A14ED30008BBF2C /* Tetris-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tetris-BridgingHeader.h"; sourceTree = "<group>"; };
 		C0E86CD62A1780F3008BBF2C /* FloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
 		C0E86CD82A17818D008BBF2C /* MatrixExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixExtensions.swift; sourceTree = "<group>"; };
@@ -80,9 +84,18 @@
 			isa = PBXGroup;
 			children = (
 				C0067E6A2A6959A3007E01F6 /* Camera.swift */,
+				C0E4AF5A2A6E71D50011E36B /* Movement.swift */,
 				C0067E702A697262007E01F6 /* FPCamera.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		C0067E722A6A6F66007E01F6 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				C0067E732A6A6F6F007E01F6 /* InputController.swift */,
+			);
+			path = Input;
 			sourceTree = "<group>";
 		};
 		C06A52B12A56BEDB00E905C2 /* Resources */ = {
@@ -135,6 +148,7 @@
 				C0E86CD42A14ED30008BBF2C /* Tetris-BridgingHeader.h */,
 				C0E86CD52A1780DB008BBF2C /* Extensions */,
 				C0F896DD2A0CE457004A313B /* Renderer */,
+				C0067E722A6A6F66007E01F6 /* Input */,
 				C06A52B12A56BEDB00E905C2 /* Resources */,
 				C06A52B02A56BEDB00E905C2 /* Main.storyboard */,
 				C0F896D42A0BB1C6004A313B /* Tetris.entitlements */,
@@ -225,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0067E742A6A6F6F007E01F6 /* InputController.swift in Sources */,
 				C0067E712A697262007E01F6 /* FPCamera.swift in Sources */,
 				C0067E6F2A696DC3007E01F6 /* Transform.swift in Sources */,
 				C0067E6D2A695A0B007E01F6 /* GameScene.swift in Sources */,
@@ -234,6 +249,7 @@
 				C0E86CD72A1780F3008BBF2C /* FloatExtension.swift in Sources */,
 				C0067E632A67E8A0007E01F6 /* Model.swift in Sources */,
 				C0E86CD92A17818D008BBF2C /* MatrixExtensions.swift in Sources */,
+				C0E4AF5B2A6E71D50011E36B /* Movement.swift in Sources */,
 				C0067E682A691AFE007E01F6 /* VertexDescriptor.swift in Sources */,
 				C0F896CC2A0BB1C3004A313B /* AppDelegate.swift in Sources */,
 				C0067E6B2A6959A3007E01F6 /* Camera.swift in Sources */,
