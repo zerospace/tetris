@@ -10,7 +10,7 @@ import MetalKit
 struct GameScene {
     let models: [Model]
     
-    var camera: ArcballCamera
+    var camera: OrthographicCamera
     
     private var venus: Model
     private var ground: Model
@@ -30,9 +30,13 @@ struct GameScene {
 //        self.camera = FPCamera()
 //        self.camera.position = [0.0, 1.5, -5.0]
         
-        self.camera = ArcballCamera()
-        self.camera.distance = length(self.camera.position)
-        self.camera.target = [0.0, 1.2, 0.0]
+//        self.camera = ArcballCamera()
+//        self.camera.distance = length(self.camera.position)
+//        self.camera.target = [0.0, 1.2, 0.0]
+        
+        self.camera = OrthographicCamera()
+        self.camera.position = [3.0, 2.0, 0.0]
+        self.camera.rotation.y = -.pi / 2.0
     }
     
     mutating func update(size: CGSize) {
