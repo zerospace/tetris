@@ -10,14 +10,20 @@ import MetalKit
 struct GameScene {
     let models: [Model]
     
-    var camera: OrthographicCamera
+    var camera: FPCamera
+    let lighting: SceneLighting
+    let input: InputController
     
     private var venus: Model
     private var ground: Model
     
-    init(device: MTLDevice) throws {
+    init(device: MTLDevice, input: InputController) throws {
+        self.input = input
+        self.lighting = SceneLighting()
+        
         self.venus = try Model(name: "Venus_de_Milo", extension: "obj", device: device)
         self.venus.position.y = 0.5
+        self.venus.rotation.y = Float(180).degreeToRadians
         self.venus.scale = 0.001
         
         let plane = MDLMesh.newPlane(withDimensions: [1.0, 1.0], segments: [1, 1], geometryType: .triangles, allocator: MTKMeshBufferAllocator(device: device))
@@ -27,16 +33,16 @@ struct GameScene {
         
         self.models = [self.venus, self.ground]
         
-//        self.camera = FPCamera()
-//        self.camera.position = [0.0, 1.5, -5.0]
+        self.camera = FPCamera(input: self.input)
+        self.camera.position = [0.0, 1.5, -5.0]
         
 //        self.camera = ArcballCamera()
 //        self.camera.distance = length(self.camera.position)
 //        self.camera.target = [0.0, 1.2, 0.0]
         
-        self.camera = OrthographicCamera()
-        self.camera.position = [3.0, 2.0, 0.0]
-        self.camera.rotation.y = -.pi / 2.0
+//        self.camera = OrthographicCamera()
+//        self.camera.position = [3.0, 2.0, 0.0]
+//        self.camera.rotation.y = -.pi / 2.0
     }
     
     mutating func update(size: CGSize) {

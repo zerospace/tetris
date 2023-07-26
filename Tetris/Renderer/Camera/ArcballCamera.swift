@@ -8,6 +8,7 @@
 import Foundation
 
 struct ArcballCamera: Camera {
+    var input: InputController
     var transform = Transform()
     
     var aspect: Float = 1.0
@@ -36,15 +37,15 @@ struct ArcballCamera: Camera {
     }
     
     mutating func update(deltaTime: Float) {
-        distance -= (InputController.shared.mouseScroll.x + InputController.shared.mouseScroll.y) * MovementSettings.scrollSensitivity
+        distance -= (input.mouseScroll.x + input.mouseScroll.y) * input.settings.scrollSensitivity
         distance = min(maxDistance, distance)
         distance = max(minDistance, distance)
-        InputController.shared.mouseScroll = .zero
-        if InputController.shared.leftMouseDown {
-            rotation.x += InputController.shared.mouseDelta.y * MovementSettings.panSensitivity
-            rotation.y += InputController.shared.mouseDelta.x * MovementSettings.panSensitivity
+        input.mouseScroll = .zero
+        if input.leftMouseDown {
+            rotation.x += input.mouseDelta.y * input.settings.panSensitivity
+            rotation.y += input.mouseDelta.x * input.settings.panSensitivity
             rotation.x = max(-.pi/2.0, min(rotation.x, .pi/2.0))
-            InputController.shared.mouseDelta = .zero
+            input.mouseDelta = .zero
         }
         let rotateMatrix = float4x4(rotation: [-rotation.x, rotation.y, 0.0])
         let distanceVector = SIMD4<Float>(0.0, 0.0, -distance, 0.0)

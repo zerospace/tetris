@@ -6,7 +6,7 @@
 //
 
 #include <metal_stdlib>
-#include "ShaderTypes.h"
+#include "Lighting.h"
 
 using namespace metal;
 
@@ -18,6 +18,8 @@ typedef struct {
 typedef struct {
     float4 position [[position]];
     float3 normal;
+    float3 worldPosition;
+    float3 worldNormal;
 } VertexOut;
 
 vertex VertexOut vertexShader(Vertex in [[stage_in]], constant Uniforms &uniforms [[buffer(BufferIndexUniforms)]]) {
@@ -26,15 +28,18 @@ vertex VertexOut vertexShader(Vertex in [[stage_in]], constant Uniforms &uniform
     float4 position = float4(in.position, 1.0);
     out.position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * position;
     out.normal = in.normal;
+    out.worldPosition = (uniforms.modelMatrix * position).xyz;
+    out.worldNormal = uniforms.normalMatrix * in.normal;
     
     return out;
 }
 
-fragment float4 fragmentShader(VertexOut in [[stage_in]], constant Uniforms &uniforms [[buffer(BufferIndexUniforms)]]) {
-//    float4 sky = float4(0.0, 0.0, 1.0, 1.0);
-//    float4 ground = float4(0.0, 1.0, 0.0, 1.0);
-//    float intensity = in.normal.y * 0.5 + 0.5;
-//    return mix(ground, sky, intensity);
-    return float4(float3(1.0, 0.0, 0.0) * float3(0.5, 0.5, 0.5), 1.0);
+fragment float4 fragmentShader(VertexOut in [[stage_in]],
+                               constant Params &params [[buffer(BufferIndexParams)]],
+                               constant Light *lights [[buffer(BufferIndexLight)]])
+{
+    float3 normalDirection = normalize(in.worldNormal);
+    float3 color = phongLightning(normalDirection, in.worldPosition, params, lights, float3(1.0, 1.0, 1.0));
+    return float4(color, 1.0);
 }
 

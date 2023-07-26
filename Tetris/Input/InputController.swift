@@ -14,14 +14,21 @@ struct Point {
     static let zero = Point(x: 0, y: 0)
 }
 
+struct InputSettings {
+    var rotationSpeed: Float { 2.0 }
+    var translationSpeed: Float { 3.0 }
+    var scrollSensitivity: Float { 0.1 }
+    var panSensitivity: Float { 0.008 }
+}
+
 final class InputController {
-    static let shared = InputController()
+    let settings: InputSettings
     
     // keyboard
-    var keyPressed: Set<GCKeyCode> = []
+    private(set) var keyPressed: Set<GCKeyCode> = []
     
     // mouse
-    var leftMouseDown = false
+    private(set) var leftMouseDown = false
     var mouseDelta: Point = .zero
     var mouseScroll: Point = .zero
     
@@ -29,6 +36,7 @@ final class InputController {
     private var mouseCancellable: Cancellable?
     
     init() {
+        self.settings = InputSettings()
         self.keyboardCancellable = NotificationCenter.default
             .publisher(for: .GCKeyboardDidConnect)
             .sink(receiveValue: { notification in

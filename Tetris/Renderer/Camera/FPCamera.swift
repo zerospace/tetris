@@ -8,6 +8,7 @@
 import Foundation
 
 struct FPCamera: Camera, Movement {
+    var input: InputController
     var transform = Transform()
     
     var aspect: Float = 1.0

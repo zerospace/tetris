@@ -48,6 +48,7 @@ class Model: Transformable {
     func render(with encoder: MTLRenderCommandEncoder, uniformBuffer: MTLBuffer, uniformOffset: Int/*, params: inout Params*/) {
         let uniforms = UnsafeMutableRawPointer(uniformBuffer.contents() + uniformOffset).bindMemory(to: Uniforms.self, capacity: 1)
         uniforms.pointee.modelMatrix = modelMatrix
+        uniforms.pointee.normalMatrix = uniforms.pointee.modelMatrix.upperLeft
         
         encoder.setVertexBuffer(uniformBuffer, offset: uniformOffset, index: BufferIndex.uniforms.rawValue)
         

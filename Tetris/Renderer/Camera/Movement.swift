@@ -7,14 +7,9 @@
 
 import Foundation
 
-struct MovementSettings {
-    static var rotationSpeed: Float { 2.0 }
-    static var translationSpeed: Float { 3.0 }
-    static var scrollSensitivity: Float { 0.1 }
-    static var panSensitivity: Float { 0.008 }
+protocol Movement where Self: Transformable {
+    var input: InputController { get set }
 }
-
-protocol Movement where Self: Transformable { }
 
 extension Movement {
     var forwardVector: SIMD3<Float> { normalize([sin(rotation.y), 0.0, cos(rotation.y)]) }
@@ -22,28 +17,28 @@ extension Movement {
     
     func updateInput(deltaTime: Float) -> Transform {
         var transform = Transform()
-        let rotation = deltaTime * MovementSettings.rotationSpeed
-        if InputController.shared.keyPressed.contains(.leftArrow) {
+        let rotation = deltaTime * input.settings.rotationSpeed
+        if input.keyPressed.contains(.leftArrow) {
             transform.rotation.y -= rotation
         }
-        if InputController.shared.keyPressed.contains(.rightArrow) {
+        if input.keyPressed.contains(.rightArrow) {
             transform.rotation.y += rotation
         }
         
         var direction: SIMD3<Float> = .zero
-        if InputController.shared.keyPressed.contains(.keyW) {
+        if input.keyPressed.contains(.keyW) {
             direction.z += 1
         }
-        if InputController.shared.keyPressed.contains(.keyS) {
+        if input.keyPressed.contains(.keyS) {
             direction.z -= 1
         }
-        if InputController.shared.keyPressed.contains(.keyA) {
+        if input.keyPressed.contains(.keyA) {
             direction.x -= 1
         }
-        if InputController.shared.keyPressed.contains(.keyD) {
+        if input.keyPressed.contains(.keyD) {
             direction.x += 1
         }
-        let translation = deltaTime * MovementSettings.translationSpeed
+        let translation = deltaTime * input.settings.translationSpeed
         if direction != .zero {
             direction = normalize(direction)
             transform.position += (direction.z * forwardVector + direction.x * rightVector) * translation

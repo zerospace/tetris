@@ -11,13 +11,16 @@
 		C0067E642A67E8A0007E01F6 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C0067E612A67E8A0007E01F6 /* Shaders.metal */; };
 		C0067E682A691AFE007E01F6 /* VertexDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E672A691AFE007E01F6 /* VertexDescriptor.swift */; };
 		C0067E6B2A6959A3007E01F6 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E6A2A6959A3007E01F6 /* Camera.swift */; };
-		C0067E6D2A695A0B007E01F6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E6C2A695A0B007E01F6 /* GameScene.swift */; };
 		C0067E6F2A696DC3007E01F6 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E6E2A696DC3007E01F6 /* Transform.swift */; };
 		C0067E712A697262007E01F6 /* FPCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E702A697262007E01F6 /* FPCamera.swift */; };
 		C0067E742A6A6F6F007E01F6 /* InputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0067E732A6A6F6F007E01F6 /* InputController.swift */; };
 		C06A52B42A56BEDB00E905C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C06A52B02A56BEDB00E905C2 /* Main.storyboard */; };
 		C06A52B52A56BEDB00E905C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C06A52B32A56BEDB00E905C2 /* Assets.xcassets */; };
 		C06A52B72A56BF1700E905C2 /* Venus_de_Milo.obj in Resources */ = {isa = PBXBuildFile; fileRef = C06A52B62A56BF1700E905C2 /* Venus_de_Milo.obj */; };
+		C0DAE1D22A711AE60065799D /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE1D12A711AE60065799D /* GameController.swift */; };
+		C0DAE1D52A7129830065799D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE1D42A7129830065799D /* GameScene.swift */; };
+		C0DAE1D72A7129900065799D /* SceneLighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE1D62A7129900065799D /* SceneLighting.swift */; };
+		C0DAE1DA2A713E450065799D /* Lighting.metal in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE1D92A713E450065799D /* Lighting.metal */; };
 		C0E4AF5B2A6E71D50011E36B /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E4AF5A2A6E71D50011E36B /* Movement.swift */; };
 		C0E4AF5D2A6E8F8F0011E36B /* ArcballCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E4AF5C2A6E8F8F0011E36B /* ArcballCamera.swift */; };
 		C0E4AF5F2A6EEBC40011E36B /* OrthographicCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E4AF5E2A6EEBC40011E36B /* OrthographicCamera.swift */; };
@@ -34,13 +37,17 @@
 		C0067E622A67E8A0007E01F6 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		C0067E672A691AFE007E01F6 /* VertexDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexDescriptor.swift; sourceTree = "<group>"; };
 		C0067E6A2A6959A3007E01F6 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
-		C0067E6C2A695A0B007E01F6 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		C0067E6E2A696DC3007E01F6 /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		C0067E702A697262007E01F6 /* FPCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPCamera.swift; sourceTree = "<group>"; };
 		C0067E732A6A6F6F007E01F6 /* InputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputController.swift; sourceTree = "<group>"; };
 		C06A52B02A56BEDB00E905C2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C06A52B32A56BEDB00E905C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C06A52B62A56BF1700E905C2 /* Venus_de_Milo.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Venus_de_Milo.obj; sourceTree = "<group>"; };
+		C0DAE1D12A711AE60065799D /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		C0DAE1D42A7129830065799D /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		C0DAE1D62A7129900065799D /* SceneLighting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLighting.swift; sourceTree = "<group>"; };
+		C0DAE1D82A713DAE0065799D /* Lighting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lighting.h; sourceTree = "<group>"; };
+		C0DAE1D92A713E450065799D /* Lighting.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Lighting.metal; sourceTree = "<group>"; };
 		C0E4AF5A2A6E71D50011E36B /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		C0E4AF5C2A6E8F8F0011E36B /* ArcballCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcballCamera.swift; sourceTree = "<group>"; };
 		C0E4AF5E2A6EEBC40011E36B /* OrthographicCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthographicCamera.swift; sourceTree = "<group>"; };
@@ -79,7 +86,9 @@
 			isa = PBXGroup;
 			children = (
 				C0067E612A67E8A0007E01F6 /* Shaders.metal */,
+				C0DAE1D92A713E450065799D /* Lighting.metal */,
 				C0067E622A67E8A0007E01F6 /* ShaderTypes.h */,
+				C0DAE1D82A713DAE0065799D /* Lighting.h */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -121,6 +130,15 @@
 			path = Obj;
 			sourceTree = "<group>";
 		};
+		C0DAE1D32A7129830065799D /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				C0DAE1D42A7129830065799D /* GameScene.swift */,
+				C0DAE1D62A7129900065799D /* SceneLighting.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
 		C0E86CD52A1780DB008BBF2C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +169,7 @@
 			children = (
 				C0F896CB2A0BB1C3004A313B /* AppDelegate.swift */,
 				C0F896CD2A0BB1C3004A313B /* ViewController.swift */,
+				C0DAE1D12A711AE60065799D /* GameController.swift */,
 				C0E86CD42A14ED30008BBF2C /* Tetris-BridgingHeader.h */,
 				C0E86CD52A1780DB008BBF2C /* Extensions */,
 				C0F896DD2A0CE457004A313B /* Renderer */,
@@ -167,9 +186,9 @@
 			children = (
 				C0067E5E2A67E8A0007E01F6 /* Geometry */,
 				C0067E692A695984007E01F6 /* Camera */,
+				C0DAE1D32A7129830065799D /* Scene */,
 				C0067E602A67E8A0007E01F6 /* Shaders */,
 				C0F896DF2A0CE457004A313B /* Renderer.swift */,
-				C0067E6C2A695A0B007E01F6 /* GameScene.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -249,18 +268,21 @@
 				C0E4AF5D2A6E8F8F0011E36B /* ArcballCamera.swift in Sources */,
 				C0067E712A697262007E01F6 /* FPCamera.swift in Sources */,
 				C0067E6F2A696DC3007E01F6 /* Transform.swift in Sources */,
-				C0067E6D2A695A0B007E01F6 /* GameScene.swift in Sources */,
 				C0F896E02A0CE458004A313B /* Renderer.swift in Sources */,
 				C0E4AF5F2A6EEBC40011E36B /* OrthographicCamera.swift in Sources */,
 				C0067E642A67E8A0007E01F6 /* Shaders.metal in Sources */,
+				C0DAE1DA2A713E450065799D /* Lighting.metal in Sources */,
+				C0DAE1D22A711AE60065799D /* GameController.swift in Sources */,
 				C0F896CE2A0BB1C3004A313B /* ViewController.swift in Sources */,
 				C0E86CD72A1780F3008BBF2C /* FloatExtension.swift in Sources */,
 				C0067E632A67E8A0007E01F6 /* Model.swift in Sources */,
+				C0DAE1D52A7129830065799D /* GameScene.swift in Sources */,
 				C0E86CD92A17818D008BBF2C /* MatrixExtensions.swift in Sources */,
 				C0E4AF5B2A6E71D50011E36B /* Movement.swift in Sources */,
 				C0067E682A691AFE007E01F6 /* VertexDescriptor.swift in Sources */,
 				C0F896CC2A0BB1C3004A313B /* AppDelegate.swift in Sources */,
 				C0067E6B2A6959A3007E01F6 /* Camera.swift in Sources */,
+				C0DAE1D72A7129900065799D /* SceneLighting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

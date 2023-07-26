@@ -8,6 +8,7 @@
 import Foundation
 
 struct OrthographicCamera: Camera, Movement {
+    var input: InputController
     var transform = Transform()
     
     var aspect: CGFloat = 1.0
@@ -31,7 +32,7 @@ struct OrthographicCamera: Camera, Movement {
     mutating func update(deltaTime: Float) {
         let transform = updateInput(deltaTime: deltaTime)
         position += transform.position
-        viewSize -= CGFloat(InputController.shared.mouseScroll.x + InputController.shared.mouseScroll.y)
-        InputController.shared.mouseScroll = .zero
+        viewSize -= CGFloat(input.mouseScroll.x + input.mouseScroll.y)
+        input.mouseScroll = .zero
     }
 }

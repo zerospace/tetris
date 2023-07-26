@@ -9,6 +9,7 @@ import simd
 
 extension float4x4 {
     static var identity: float4x4 { matrix_identity_float4x4 }
+    var upperLeft: float3x3 { float3x3(columns: (columns.0.xyz, columns.1.xyz, columns.2.xyz)) }
     
     // MARK: - Translation
     init(translation t: SIMD3<Float>) {
@@ -100,5 +101,12 @@ extension SIMD4<Float> {
             y = newValue.y
             z = newValue.z
         }
+    }
+}
+
+extension float3x3 {
+    init(normalFrom4x4 matrix: float4x4) {
+        self.init()
+        columns = matrix.upperLeft.inverse.transpose.columns
     }
 }

@@ -10,7 +10,7 @@ import MetalKit
 
 class ViewController: NSViewController {
     private var mtkView: MTKView!
-    private var renderer: Renderer!
+    private var game: GameController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +29,10 @@ class ViewController: NSViewController {
         self.mtkView.device = defaultDevice
         
         do {
-            self.renderer = try Renderer(with: self.mtkView)
-            self.mtkView.delegate = self.renderer
+            self.game = try GameController(metalView: mtkView)
         }
         catch {
-            print("Renderer Error: \(error)")
+            print("Error: \(error)")
         }
     }
 }
