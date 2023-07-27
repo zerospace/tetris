@@ -21,10 +21,10 @@ struct GameScene {
         self.input = input
         self.lighting = SceneLighting()
         
-        self.venus = try Model(name: "Venus_de_Milo", extension: "obj", device: device)
-        self.venus.position.y = 0.5
+        self.venus = try Model(name: "monkey", extension: "obj", device: device)
+        self.venus.position.y = 1.0
         self.venus.rotation.y = Float(180).degreeToRadians
-        self.venus.scale = 0.001
+//        self.venus.scale = 0.001
         
         let plane = MDLMesh.newPlane(withDimensions: [1.0, 1.0], segments: [1, 1], geometryType: .triangles, allocator: MTKMeshBufferAllocator(device: device))
         self.ground = try Model(with: plane, name: "ground", device: device)
