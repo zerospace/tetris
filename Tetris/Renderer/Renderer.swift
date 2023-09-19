@@ -9,8 +9,6 @@ import Metal
 import MetalKit
 import simd
 
-let alignedUniformSize = (MemoryLayout<Uniforms>.size + 0xFF) & -0x100
-let alignedParamsSize = (MemoryLayout<Params>.size + 0xFF) & -0x100
 let maxBuffers = 3
 
 class Renderer: NSObject {
@@ -18,16 +16,12 @@ class Renderer: NSObject {
     let commandQueue: MTLCommandQueue
     let pipelineState: MTLRenderPipelineState
     let depthState: MTLDepthStencilState
-    let uniformBuffer: MTLBuffer
-    let paramsBuffer: MTLBuffer
+    let colorBuffer: MTLBuffer
     
     private var uniformBufferIndex = 0
-    private var uniformBufferOffset = 0
-    private var uniforms: UnsafeMutablePointer<Uniforms>
+    private var uniforms = Uniforms()
     
-    private var paramsBufferIndex = 0
-    private var paramsBufferOffset = 0
-    private var params: UnsafeMutablePointer<Params>
+    private var params = Params()
     
     private let gpuLock = DispatchSemaphore(value: maxBuffers)
     
@@ -36,13 +30,7 @@ class Renderer: NSObject {
         self.device = view.device!
         self.commandQueue = self.device.makeCommandQueue()!
         
-        let uniformBufferSize = alignedUniformSize * maxBuffers
-        self.uniformBuffer = self.device.makeBuffer(length: uniformBufferSize, options: [.storageModeShared])!
-        self.uniforms = UnsafeMutableRawPointer(self.uniformBuffer.contents()).bindMemory(to: Uniforms.self, capacity: 1)
-        
-        let paramsBufferSize = alignedParamsSize * maxBuffers
-        self.paramsBuffer = self.device.makeBuffer(length: paramsBufferSize, options: [.storageModeShared])!
-        self.params = UnsafeMutableRawPointer(self.paramsBuffer.contents()).bindMemory(to: Params.self, capacity: 1)
+        self.colorBuffer = device.makeBuffer(length: MemoryLayout<simd_float3>.stride, options: [.storageModeShared])!
         
         view.depthStencilPixelFormat = .depth32Float
         
@@ -60,7 +48,7 @@ class Renderer: NSObject {
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}
     
     func draw(scene: GameScene, in view: MTKView) {
-        _ = gpuLock.wait(timeout: DispatchTime.distantFuture)
+        _ = gpuLock.wait(timeout: .distantFuture)
         
         guard let commandBuffer = commandQueue.makeCommandBuffer() else { return }
         commandBuffer.addCompletedHandler { _ in
@@ -74,24 +62,20 @@ class Renderer: NSObject {
         renderEncoder.setRenderPipelineState(pipelineState)
         renderEncoder.setDepthStencilState(depthState)
         
-        paramsBufferIndex = (paramsBufferIndex + 1) % maxBuffers
-        paramsBufferOffset = alignedParamsSize * paramsBufferIndex
-        params = UnsafeMutableRawPointer(paramsBuffer.contents() + paramsBufferOffset).bindMemory(to: Params.self, capacity: 1)
-        params[0].lightCount = UInt32(scene.lighting.lights.count)
-        params[0].cameraPosition = scene.camera.position
-        renderEncoder.setFragmentBuffer(paramsBuffer, offset: paramsBufferOffset, index: BufferIndex.params.rawValue)
+        params.lightCount = UInt32(scene.lighting.lights.count)
+        params.cameraPosition = scene.camera.position
+        renderEncoder.setFragmentBytes(&params, length: MemoryLayout<Params>.stride, index: BufferIndex.params.rawValue)
         
         var lights = scene.lighting.lights
         renderEncoder.setFragmentBytes(&lights, length: MemoryLayout<Light>.stride * lights.count, index: BufferIndex.light.rawValue)
         
+        uniforms.projectionMatrix = scene.camera.projectionMatrix
+        uniforms.viewMatrix = scene.camera.viewMatrix
+        uniformBufferIndex = (uniformBufferIndex + 1) % maxBuffers
+        
+        
         for model in scene.models {
-            uniformBufferIndex = (uniformBufferIndex + 1) % maxBuffers
-            uniformBufferOffset = alignedUniformSize * uniformBufferIndex
-            uniforms = UnsafeMutableRawPointer(uniformBuffer.contents() + uniformBufferOffset).bindMemory(to: Uniforms.self, capacity: 1)
-            uniforms[0].projectionMatrix = scene.camera.projectionMatrix
-            uniforms[0].viewMatrix = scene.camera.viewMatrix
-            
-            model.render(with: renderEncoder, uniformBuffer: uniformBuffer, uniformOffset: uniformBufferOffset)
+            model.render(with: renderEncoder, uniforms: uniforms)
         }
         
         renderEncoder.endEncoding()

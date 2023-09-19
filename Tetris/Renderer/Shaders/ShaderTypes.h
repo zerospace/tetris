@@ -21,14 +21,18 @@ typedef NSInteger EnumType;
 typedef NS_ENUM(EnumType, BufferIndex) {
     BufferIndexMeshPositions    = 0,
     BufferIndexMeshNormal       = 1,
-    BufferIndexUniforms         = 2,
-    BufferIndexParams           = 3,
-    BufferIndexLight            = 4
+    BufferIndexMeshColor        = 2,
+    BufferIndexMeshUV           = 3,
+    BufferIndexUniforms         = 4,
+    BufferIndexParams           = 5,
+    BufferIndexLight            = 6
 };
 
 typedef NS_ENUM(EnumType, VertexAttribute) {
     VertexAttributePosition     = 0,
-    VertexAttributeNormal       = 1
+    VertexAttributeNormal       = 1,
+    VertexAttributeColor        = 2,
+    VertexAttributeUV           = 3
 };
 
 typedef NS_ENUM(EnumType, LightType) {

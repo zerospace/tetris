@@ -39,18 +39,22 @@ class Model: Transformable {
         self.mesh = try MTKMesh(mesh: mdlMesh, device: device)
     }
     
-    init(with mdlMesh: MDLMesh, name: String, device: MTLDevice) throws {
+    init(with mdlMesh: MDLMesh, name: String, device: MTLDevice, color: NSColor? = .white) throws {
         mdlMesh.vertexDescriptor = .defaultDescriptor
+        if let colorData = color?.data(count: mdlMesh.vertexCount) {
+            mdlMesh.vertexBuffers[BufferIndex.meshColor.rawValue] = mdlMesh.allocator.newBuffer(with: colorData, type: .vertex)
+        }
+        
         self.name = name
         self.mesh = try MTKMesh(mesh: mdlMesh, device: device)
     }
     
-    func render(with encoder: MTLRenderCommandEncoder, uniformBuffer: MTLBuffer, uniformOffset: Int/*, params: inout Params*/) {
-        let uniforms = UnsafeMutableRawPointer(uniformBuffer.contents() + uniformOffset).bindMemory(to: Uniforms.self, capacity: 1)
-        uniforms.pointee.modelMatrix = modelMatrix
-        uniforms.pointee.normalMatrix = uniforms.pointee.modelMatrix.upperLeft
+    func render(with encoder: MTLRenderCommandEncoder, uniforms: Uniforms) {
+        var uniforms = uniforms
+        uniforms.modelMatrix = modelMatrix
+        uniforms.normalMatrix = uniforms.modelMatrix.upperLeft
         
-        encoder.setVertexBuffer(uniformBuffer, offset: uniformOffset, index: BufferIndex.uniforms.rawValue)
+        encoder.setVertexBytes(&uniforms, length: MemoryLayout<Uniforms>.stride, index: BufferIndex.uniforms.rawValue)
         
         for (index, element) in mesh.vertexDescriptor.layouts.enumerated() {
             guard let layout = element as? MDLVertexBufferLayout else { return }

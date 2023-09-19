@@ -13,11 +13,13 @@ using namespace metal;
 typedef struct {
     float3 position [[attribute(VertexAttributePosition)]];
     float3 normal [[attribute(VertexAttributeNormal)]];
+    float3 color [[attribute(VertexAttributeColor)]];
 } Vertex;
 
 typedef struct {
     float4 position [[position]];
     float3 normal;
+    float3 color;
     float3 worldPosition;
     float3 worldNormal;
 } VertexOut;
@@ -28,6 +30,7 @@ vertex VertexOut vertexShader(Vertex in [[stage_in]], constant Uniforms &uniform
     float4 position = float4(in.position, 1.0);
     out.position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * position;
     out.normal = in.normal;
+    out.color = in.color;
     out.worldPosition = (uniforms.modelMatrix * position).xyz;
     out.worldNormal = uniforms.normalMatrix * in.normal;
     
@@ -39,7 +42,7 @@ fragment float4 fragmentShader(VertexOut in [[stage_in]],
                                constant Light *lights [[buffer(BufferIndexLight)]])
 {
     float3 normalDirection = normalize(in.worldNormal);
-    float3 color = phongLightning(normalDirection, in.worldPosition, params, lights, float3(1.0, 1.0, 1.0));
+    float3 color = phongLightning(normalDirection, in.worldPosition, params, lights, in.color);
     return float4(color, 1.0);
 }
 

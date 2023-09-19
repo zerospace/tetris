@@ -23,12 +23,12 @@
 		C0E4AF5B2A6E71D50011E36B /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E4AF5A2A6E71D50011E36B /* Movement.swift */; };
 		C0E4AF5D2A6E8F8F0011E36B /* ArcballCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E4AF5C2A6E8F8F0011E36B /* ArcballCamera.swift */; };
 		C0E4AF5F2A6EEBC40011E36B /* OrthographicCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E4AF5E2A6EEBC40011E36B /* OrthographicCamera.swift */; };
-		C0E7A97E2A728A1600D5EC66 /* monkey.obj in Resources */ = {isa = PBXBuildFile; fileRef = C0E7A97D2A728A1600D5EC66 /* monkey.obj */; };
 		C0E86CD72A1780F3008BBF2C /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86CD62A1780F3008BBF2C /* FloatExtension.swift */; };
 		C0E86CD92A17818D008BBF2C /* MatrixExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86CD82A17818D008BBF2C /* MatrixExtensions.swift */; };
 		C0F896CC2A0BB1C3004A313B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F896CB2A0BB1C3004A313B /* AppDelegate.swift */; };
 		C0F896CE2A0BB1C3004A313B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F896CD2A0BB1C3004A313B /* ViewController.swift */; };
 		C0F896E02A0CE458004A313B /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F896DF2A0CE457004A313B /* Renderer.swift */; };
+		EBA5BCAB2AB83C5B004C0B48 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5BCAA2AB83C5B004C0B48 /* UIColorExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +50,6 @@
 		C0E4AF5A2A6E71D50011E36B /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		C0E4AF5C2A6E8F8F0011E36B /* ArcballCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcballCamera.swift; sourceTree = "<group>"; };
 		C0E4AF5E2A6EEBC40011E36B /* OrthographicCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthographicCamera.swift; sourceTree = "<group>"; };
-		C0E7A97D2A728A1600D5EC66 /* monkey.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = monkey.obj; sourceTree = "<group>"; };
 		C0E86CD42A14ED30008BBF2C /* Tetris-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tetris-BridgingHeader.h"; sourceTree = "<group>"; };
 		C0E86CD62A1780F3008BBF2C /* FloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
 		C0E86CD82A17818D008BBF2C /* MatrixExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixExtensions.swift; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		C0F896CD2A0BB1C3004A313B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C0F896D42A0BB1C6004A313B /* Tetris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tetris.entitlements; sourceTree = "<group>"; };
 		C0F896DF2A0CE457004A313B /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		EBA5BCAA2AB83C5B004C0B48 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,6 @@
 		C06A52B22A56BEDB00E905C2 /* Obj */ = {
 			isa = PBXGroup;
 			children = (
-				C0E7A97D2A728A1600D5EC66 /* monkey.obj */,
 			);
 			path = Obj;
 			sourceTree = "<group>";
@@ -144,6 +143,7 @@
 			children = (
 				C0E86CD62A1780F3008BBF2C /* FloatExtension.swift */,
 				C0E86CD82A17818D008BBF2C /* MatrixExtensions.swift */,
+				EBA5BCAA2AB83C5B004C0B48 /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -252,7 +252,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C06A52B52A56BEDB00E905C2 /* Assets.xcassets in Resources */,
-				C0E7A97E2A728A1600D5EC66 /* monkey.obj in Resources */,
 				C06A52B42A56BEDB00E905C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +282,7 @@
 				C0F896CC2A0BB1C3004A313B /* AppDelegate.swift in Sources */,
 				C0067E6B2A6959A3007E01F6 /* Camera.swift in Sources */,
 				C0DAE1D72A7129900065799D /* SceneLighting.swift in Sources */,
+				EBA5BCAB2AB83C5B004C0B48 /* UIColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

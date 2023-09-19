@@ -30,7 +30,13 @@ struct FPCamera: Camera, Movement {
     
     mutating func update(deltaTime: Float) {
         let transform = updateInput(deltaTime: deltaTime)
-        rotation += transform.rotation
         position += transform.position
+        
+//        if input.leftMouseDown {
+//            rotation.x += input.mouseDelta.y * input.settings.panSensitivity
+//            rotation.y += input.mouseDelta.x * input.settings.panSensitivity
+//            rotation.x = max(-.pi/2.0, min(rotation.x, .pi/2.0))
+//            input.mouseDelta = .zero
+//        }
     }
 }

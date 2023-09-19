@@ -17,13 +17,13 @@ extension Movement {
     
     func updateInput(deltaTime: Float) -> Transform {
         var transform = Transform()
-        let rotation = deltaTime * input.settings.rotationSpeed
-        if input.keyPressed.contains(.leftArrow) {
-            transform.rotation.y -= rotation
-        }
-        if input.keyPressed.contains(.rightArrow) {
-            transform.rotation.y += rotation
-        }
+//        let rotation = deltaTime * input.settings.rotationSpeed
+//        if input.keyPressed.contains(.leftArrow) {
+//            transform.rotation.y -= rotation
+//        }
+//        if input.keyPressed.contains(.rightArrow) {
+//            transform.rotation.y += rotation
+//        }
         
         var direction: SIMD3<Float> = .zero
         if input.keyPressed.contains(.keyW) {

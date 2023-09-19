@@ -22,10 +22,10 @@ struct InputSettings {
 }
 
 final class InputController {
-    let settings: InputSettings
+    let settings = InputSettings()
     
     // keyboard
-    private(set) var keyPressed: Set<GCKeyCode> = []
+    var keyPressed: Set<GCKeyCode> = []
     
     // mouse
     private(set) var leftMouseDown = false
@@ -36,7 +36,6 @@ final class InputController {
     private var mouseCancellable: Cancellable?
     
     init() {
-        self.settings = InputSettings()
         self.keyboardCancellable = NotificationCenter.default
             .publisher(for: .GCKeyboardDidConnect)
             .sink(receiveValue: { notification in
