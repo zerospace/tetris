@@ -7,22 +7,9 @@
 
 #include <metal_stdlib>
 #include "Lighting.h"
+#include "Vertex.h"
 
 using namespace metal;
-
-typedef struct {
-    float3 position [[attribute(VertexAttributePosition)]];
-    float3 normal [[attribute(VertexAttributeNormal)]];
-    float3 color [[attribute(VertexAttributeColor)]];
-} Vertex;
-
-typedef struct {
-    float4 position [[position]];
-    float3 normal;
-    float3 color;
-    float3 worldPosition;
-    float3 worldNormal;
-} VertexOut;
 
 vertex VertexOut vertexShader(Vertex in [[stage_in]], constant Uniforms &uniforms [[buffer(BufferIndexUniforms)]]) {
     VertexOut out;
@@ -31,6 +18,7 @@ vertex VertexOut vertexShader(Vertex in [[stage_in]], constant Uniforms &uniform
     out.position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * position;
     out.normal = in.normal;
     out.color = in.color;
+    out.uv = in.uv;
     out.worldPosition = (uniforms.modelMatrix * position).xyz;
     out.worldNormal = uniforms.normalMatrix * in.normal;
     

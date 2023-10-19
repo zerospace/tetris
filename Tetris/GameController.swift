@@ -30,9 +30,20 @@ class GameController: NSObject, MTKViewDelegate {
                           [3, 5, 7, 6], // J
                           [2, 3, 4, 5]] // O
     
+    private let colors: [NSColor] = [.cyan,     // I
+                                     .red,      // Z
+                                     .green,    // S
+                                     .purple,   // T
+                                     .orange,   // L
+                                     .blue,     // J
+                                     .yellow]   // O
+    private var currentColor = NSColor.white
+    
     private var lastRenderTime = CACurrentMediaTime()
-    private var timer: Float = 0
-    private var delay: Float = 0.3
+    private var gameTimer: Float = 0
+    private var gameDelay: Float = 0.3
+    private var inputTimer: Float = 0
+    private var inputDelay: Float = 0.1
     
     private var dx = 0
     private var rotate = false
@@ -61,38 +72,43 @@ class GameController: NSObject, MTKViewDelegate {
         let timeDiff = Float(systemTime - lastRenderTime)
         lastRenderTime = systemTime
         
-        timer += timeDiff
+        gameTimer += timeDiff
             
-        updateGameState()
-        scene.updateBlocks(tetramino: currTetraminoPos)
+        updateGameState(deltaTime: timeDiff)
+        scene.updateBlocks(tetramino: currTetraminoPos, with: currentColor)
         scene.update(deltaTime: timeDiff)
         renderer.draw(scene: scene, in: view)
     }
     
     // MARK: - Private
-    private func updateGameState() {
+    private func updateGameState(deltaTime: Float) {
         if input.keyPressed.contains(.upArrow) {
             input.keyPressed.remove(.upArrow)
             rotate = true
         }
-        if input.keyPressed.contains(.leftArrow) {
-            dx = -1
-        }
-        if input.keyPressed.contains(.rightArrow) {
-            dx = 1
-        }
         if input.keyPressed.contains(.downArrow) {
-            delay = 0.05
+            gameDelay = 0.05
         }
         
-        for i in 0..<4 {
-            prevTetraminoPos[i] = currTetraminoPos[i]
-            currTetraminoPos[i].x += dx
+        let leftPressed = input.keyPressed.contains(.leftArrow)
+        let rightPressed = input.keyPressed.contains(.rightArrow)
+        if leftPressed || rightPressed {
+            if inputTimer == 0 || inputTimer > inputDelay {
+                dx = leftPressed ? -1 : 1
+                
+                for i in 0..<4 {
+                    prevTetraminoPos[i] = currTetraminoPos[i]
+                    currTetraminoPos[i].x += dx
+                }
 
+                if !check() {
+                    currTetraminoPos = prevTetraminoPos
+                }
+            }
+            inputTimer += deltaTime
         }
-
-        if !check() {
-            currTetraminoPos = prevTetraminoPos
+        else {
+            inputTimer = 0
         }
         
         if rotate {
@@ -108,7 +124,7 @@ class GameController: NSObject, MTKViewDelegate {
             }
         }
         
-        if timer > delay {
+        if gameTimer > gameDelay {
             for i in 0..<4 {
                 prevTetraminoPos[i] = currTetraminoPos[i]
                 currTetraminoPos[i].y += 1
@@ -116,11 +132,11 @@ class GameController: NSObject, MTKViewDelegate {
             if !check() {
                 for i in 0..<4 {
                     field[prevTetraminoPos[i].y][prevTetraminoPos[i].x] = 1
-                    scene.addBlock([prevTetraminoPos[i].y, prevTetraminoPos[i].x])
+                    scene.addBlock([prevTetraminoPos[i].y, prevTetraminoPos[i].x], with: currentColor)
                 }
                 newTetramino()
             }
-            timer = 0
+            gameTimer = 0
         }
         
         var k = kFieldHeight - 1
@@ -140,11 +156,12 @@ class GameController: NSObject, MTKViewDelegate {
         
         dx = 0
         rotate = false
-        delay = 0.3
+        gameDelay = 0.3
     }
     
     private func newTetramino() {
         let n = Int.random(in: 0..<blocks.count)
+        currentColor = colors[n]
         for i in 0..<4 {
             currTetraminoPos[i].x = blocks[n][i] % 2 + kFieldWidth / 2 - 1
             currTetraminoPos[i].y = blocks[n][i] / 2

@@ -16,21 +16,16 @@ class Renderer: NSObject {
     let commandQueue: MTLCommandQueue
     let pipelineState: MTLRenderPipelineState
     let depthState: MTLDepthStencilState
-    let colorBuffer: MTLBuffer
     
     private var uniformBufferIndex = 0
     private var uniforms = Uniforms()
-    
     private var params = Params()
     
     private let gpuLock = DispatchSemaphore(value: maxBuffers)
     
-    
     init(with view: MTKView) throws {
         self.device = view.device!
         self.commandQueue = self.device.makeCommandQueue()!
-        
-        self.colorBuffer = device.makeBuffer(length: MemoryLayout<simd_float3>.stride, options: [.storageModeShared])!
         
         view.depthStencilPixelFormat = .depth32Float
         

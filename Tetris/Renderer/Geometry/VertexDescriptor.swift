@@ -38,8 +38,8 @@ extension MTLVertexDescriptor {
         mtlVertexDescriptor.layouts[BufferIndex.meshNormal.rawValue].stepFunction = .perVertex
         
         mtlVertexDescriptor.layouts[BufferIndex.meshColor.rawValue].stride = MemoryLayout<simd_float3>.stride
-        mtlVertexDescriptor.layouts[BufferIndex.meshColor.rawValue].stepRate = 1
-        mtlVertexDescriptor.layouts[BufferIndex.meshColor.rawValue].stepFunction = .perVertex
+        mtlVertexDescriptor.layouts[BufferIndex.meshColor.rawValue].stepRate = 0
+        mtlVertexDescriptor.layouts[BufferIndex.meshColor.rawValue].stepFunction = .constant
         
         mtlVertexDescriptor.layouts[BufferIndex.meshUV.rawValue].stride = MemoryLayout<simd_float2>.stride
         mtlVertexDescriptor.layouts[BufferIndex.meshUV.rawValue].stepRate = 1

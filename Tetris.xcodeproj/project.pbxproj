@@ -29,6 +29,7 @@
 		C0F896CE2A0BB1C3004A313B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F896CD2A0BB1C3004A313B /* ViewController.swift */; };
 		C0F896E02A0CE458004A313B /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F896DF2A0CE457004A313B /* Renderer.swift */; };
 		EBA5BCAB2AB83C5B004C0B48 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5BCAA2AB83C5B004C0B48 /* UIColorExtensions.swift */; };
+		EBACC4CD2ADE8822002E2AAE /* ZigzagFragmentShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = EBACC4CC2ADE8821002E2AAE /* ZigzagFragmentShader.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,8 @@
 		C0F896D42A0BB1C6004A313B /* Tetris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tetris.entitlements; sourceTree = "<group>"; };
 		C0F896DF2A0CE457004A313B /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		EBA5BCAA2AB83C5B004C0B48 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		EBACC4CC2ADE8821002E2AAE /* ZigzagFragmentShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ZigzagFragmentShader.metal; sourceTree = "<group>"; };
+		EBACC4CE2ADE88D1002E2AAE /* Vertex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +89,10 @@
 			isa = PBXGroup;
 			children = (
 				C0067E612A67E8A0007E01F6 /* Shaders.metal */,
+				EBACC4CC2ADE8821002E2AAE /* ZigzagFragmentShader.metal */,
 				C0DAE1D92A713E450065799D /* Lighting.metal */,
 				C0067E622A67E8A0007E01F6 /* ShaderTypes.h */,
+				EBACC4CE2ADE88D1002E2AAE /* Vertex.h */,
 				C0DAE1D82A713DAE0065799D /* Lighting.h */,
 			);
 			path = Shaders;
@@ -274,6 +279,7 @@
 				C0DAE1D22A711AE60065799D /* GameController.swift in Sources */,
 				C0F896CE2A0BB1C3004A313B /* ViewController.swift in Sources */,
 				C0E86CD72A1780F3008BBF2C /* FloatExtension.swift in Sources */,
+				EBACC4CD2ADE8822002E2AAE /* ZigzagFragmentShader.metal in Sources */,
 				C0067E632A67E8A0007E01F6 /* Model.swift in Sources */,
 				C0DAE1D52A7129830065799D /* GameScene.swift in Sources */,
 				C0E86CD92A17818D008BBF2C /* MatrixExtensions.swift in Sources */,

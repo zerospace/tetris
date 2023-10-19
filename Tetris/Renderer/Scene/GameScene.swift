@@ -40,7 +40,6 @@ struct GameScene {
         
         let block = MDLMesh.newBox(withDimensions: [Float(kFieldWidth), 1.0, 1.0], segments: [UInt32(kFieldWidth), 1, 1], geometryType: .triangles, inwardNormals: false, allocator: self.allocator)
         self.plinth = try Model(with: block, name: "plinth", device: device, color: NSColor(red: 0.25, green: 0.1, blue: 0.0, alpha: 1.0))
-//        self.plinth.rotation.y = Float(-25).degreeToRadians
         
         sceneModels = [self.ground, self.plinth]
         
@@ -54,9 +53,9 @@ struct GameScene {
         self.camera.position = [0.0, 10.0, -20.0]
     }
     
-    mutating func addBlock(_ coord: SIMD2<Int>) {
+    mutating func addBlock(_ coord: SIMD2<Int>, with color: NSColor) {
         let mesh = MDLMesh(boxWithExtent: [1, 1, 1], segments: [1, 1, 1], inwardNormals: false, geometryType: .triangles, allocator: allocator)
-        if let block = try? Model(with: mesh, name: "block", device: device) {
+        if let block = try? Model(with: mesh, name: "block", device: device, color: color) {
             blocks[coord.x][coord.y] = block
         }
     }
@@ -65,11 +64,11 @@ struct GameScene {
         blocks[vec.z][vec.y] = blocks[vec.x][vec.y]
     }
     
-    mutating func updateBlocks(tetramino gameCoord: [SIMD2<Int>]) {
+    mutating func updateBlocks(tetramino gameCoord: [SIMD2<Int>], with color: NSColor) {
         for i in 0..<gameCoord.count {
             tetramino[i].position = gameCoordinatesToPosition(gameCoord[i])
             tetramino[i].rotation = plinth.rotation
-            tetramino[i].scale = plinth.scale
+            tetramino[i].color = color
         }
         
         for i in 0..<kFieldWidth {
@@ -77,7 +76,6 @@ struct GameScene {
                 if var model = blocks[j][i] {
                     model.position = gameCoordinatesToPosition([i, j])
                     model.rotation = plinth.rotation
-                    model.scale = plinth.scale
                 }
             }
         }

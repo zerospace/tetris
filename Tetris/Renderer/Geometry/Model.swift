@@ -15,7 +15,13 @@ enum ModelError: Error {
 class Model: Transformable {
     let mesh: MTKMesh
     let name: String
-    
+    var color = NSColor.white {
+        didSet {
+            let ptr = UnsafeMutableRawPointer(mesh.vertexBuffers[BufferIndex.meshColor.rawValue].buffer.contents()).bindMemory(to: SIMD3<Float>.self, capacity: 1)
+            var simd3 = color.simd_float3
+            ptr.update(from: &simd3, count: 1)
+        }
+    }
     var transform = Transform()
     
     var modelMatrix: matrix_float4x4 {
@@ -39,11 +45,9 @@ class Model: Transformable {
         self.mesh = try MTKMesh(mesh: mdlMesh, device: device)
     }
     
-    init(with mdlMesh: MDLMesh, name: String, device: MTLDevice, color: NSColor? = .white) throws {
+    init(with mdlMesh: MDLMesh, name: String, device: MTLDevice, color: NSColor = .white) throws {
         mdlMesh.vertexDescriptor = .defaultDescriptor
-        if let colorData = color?.data(count: mdlMesh.vertexCount) {
-            mdlMesh.vertexBuffers[BufferIndex.meshColor.rawValue] = mdlMesh.allocator.newBuffer(with: colorData, type: .vertex)
-        }
+        mdlMesh.vertexBuffers[BufferIndex.meshColor.rawValue] = mdlMesh.allocator.newBuffer(with: color.data, type: .vertex)
         
         self.name = name
         self.mesh = try MTKMesh(mesh: mdlMesh, device: device)

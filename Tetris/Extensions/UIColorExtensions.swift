@@ -8,9 +8,14 @@
 import Cocoa
 
 extension NSColor {
-    func data(count: Int) -> Data? {
-        guard let rgb = usingColorSpace(.deviceRGB) else { return nil }
-        var array = Array(repeating: SIMD3<Float>([Float(rgb.redComponent), Float(rgb.greenComponent), Float(rgb.blueComponent)]), count: count)
-        return Data(bytes: &array, count: MemoryLayout<simd_float3>.stride * count)
+    var data: Data {
+        guard let rgb = usingColorSpace(.deviceRGB) else { return Data() }
+        var simd = self.simd_float3
+        return Data(bytes: &simd, count: MemoryLayout<SIMD3<Float>>.stride)
+    }
+    
+    var simd_float3: SIMD3<Float> {
+        guard let rgb = usingColorSpace(.deviceRGB) else { return SIMD3<Float>(0.0, 0.0, 0.0) }
+        return SIMD3<Float>([Float(rgb.redComponent), Float(rgb.greenComponent), Float(rgb.blueComponent)])
     }
 }
